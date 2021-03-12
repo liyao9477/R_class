@@ -1,5 +1,5 @@
 # sub_join
-##环同比增长、减少、维持现状  
+## 环同比增长、减少、维持现状  
 sales  
 year  sale  
 2017 50  
@@ -45,7 +45,7 @@ ELSE '—' END AS var
 FROM Sales S1  
 ORDER BY year;  
 
-#用自连接实现  
+# 用自连接实现  
 -- 求出是增长了还是减少了，抑或是维持现状 (2)：使用自连接查询（最早的年份不会出现在结果里）  
 SELECT S1.year, S1.sale,  
 CASE WHEN S1.sale = S2.sale THEN '→'  
@@ -57,7 +57,7 @@ WHERE S2.year = S1.year - 1
 ORDER BY year;  
 
 
-#时间轴有间断时 ：和过去最临近的时间进行比较  
+# 时间轴有间断时 ：和过去最临近的时间进行比较  
 思路  
 1. 与该年份相比是过去的年份。  
 2. 在满足条件 1 的年份中，年份最早的一个。  
@@ -106,7 +106,7 @@ ON S2.year = (SELECT MAX(year)
 ORDER BY now_year;  
 
 
-##移动累计值和移动平均值    
+## 移动累计值和移动平均值    
 Accounts  
 prc_date  prc_amt  
 2020-12-03 3000  
@@ -159,7 +159,7 @@ HAVING COUNT(*) =3) AS mvg_sum -- 不满 3 行数据的不显示
  FROM Accounts A1  
  ORDER BY prc_date;  
 
-##查询重叠的时间区间  
+## 查询重叠的时间区间  
 reservations  
 reserver  start_date  end_date  
   A       2020-02-01  2020-02-19  
